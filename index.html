@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>剩下的一年 測驗解析</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;800&family=Huninn&family=Noto+Sans+TC:wght@400;500&display=swap">
+<style>
+/* Layout: one phone-width column of letter cards with hard offset shadows; denim navy + brass, like a well-kept leather wallet */
+:root{
+  --bg:#E4E9EE; --card:#FBFCFD; --soft:#EDF1F5; --tile:#D9E1E9;
+  --ink:#18222D; --muted:#5A6673; --navy:#24405E; --brass:#9A6B25; --shadow:#18222D; --btn-ink:#FBFCFD;
+  --f-head:"Noto Serif TC","Songti TC",serif;
+  --f-round:"Huninn","Noto Sans TC","PingFang TC",sans-serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F151C; --card:#17202A; --soft:#1D2834; --tile:#22303E;
+  --ink:#E4E9EE; --muted:#97A4B1; --navy:#8DB3DA; --brass:#D9A85C; --shadow:#04070A; --btn-ink:#0F151C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F151C; --card:#17202A; --soft:#1D2834; --tile:#22303E;
+  --ink:#E4E9EE; --muted:#97A4B1; --navy:#8DB3DA; --brass:#D9A85C; --shadow:#04070A; --btn-ink:#0F151C; color-scheme:dark}
+
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.85}
+.wrap{max-width:560px;margin:0 auto;padding-block:28px 56px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:24px}
+h1,h2,h3{font-family:var(--f-head);font-weight:800;margin:0;text-wrap:balance;line-height:1.4}
+p{margin:0}
+.pill{align-self:flex-start;font-family:var(--f-round);font-size:13px;letter-spacing:.06em;background:var(--navy);color:var(--btn-ink);padding:4px 14px;border-radius:999px}
+.card{background:var(--card);border:2px solid var(--shadow);border-radius:18px;box-shadow:5px 5px 0 var(--shadow)}
+.muted{color:var(--muted)}
+
+/* landing */
+.intro{display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center}
+.intro .pill{align-self:center}
+.intro h1{font-size:clamp(24px,6.4vw,30px)}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px}
+.tile{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 8px 10px;background:var(--tile);border-radius:12px;border:2px solid transparent;cursor:pointer;color:var(--ink);font:inherit;text-decoration:none}
+.tile:hover,.tile:focus-visible{border-color:var(--navy);outline:none}
+.tile svg{width:100%;max-width:130px;aspect-ratio:1;height:auto}
+.tile b{font-family:var(--f-round);font-weight:400;font-size:14px}
+.opts{display:flex;flex-direction:column;gap:12px}
+.opt{display:flex;align-items:center;gap:14px;padding:14px 16px;text-decoration:none;color:var(--ink);font-family:var(--f-round);font-size:16px}
+.opt:hover,.opt:focus-visible{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--shadow);outline:none}
+.letter{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--brass);font-family:var(--f-head);font-weight:800;border:1.5px solid var(--brass)}
+
+/* result */
+.res-head{display:flex;flex-direction:column;gap:10px}
+.res-head h1{font-size:clamp(23px,6vw,28px)}
+.res-head .chosen{font-size:13.5px;color:var(--muted)}
+.res-art{align-self:flex-end;width:84px;height:84px;margin-bottom:-14px;background:var(--tile);border-radius:50%;border:2px solid var(--shadow);display:grid;place-items:center}
+.res-art svg{width:66px;height:66px}
+.quote{padding:16px 18px;border-left:5px solid var(--navy);border-radius:10px 14px 14px 10px;font-family:var(--f-head);font-weight:600;font-size:17px;line-height:1.7}
+.letter-card{padding:22px 20px;display:flex;flex-direction:column;gap:22px}
+.sec{display:flex;flex-direction:column;gap:8px}
+.sec h3{font-family:var(--f-round);font-weight:400;font-size:14.5px;color:var(--brass);letter-spacing:.04em}
+.sec p+p{margin-top:6px}
+.steps{background:var(--soft);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:14px}
+.steps b{display:block;font-weight:500}
+.say{font-family:var(--f-head);font-weight:600;font-size:17px}
+
+/* community */
+.join{padding:22px 20px;display:flex;flex-direction:column;gap:14px}
+.eyebrow{font-family:var(--f-round);font-size:13px;letter-spacing:.12em;color:var(--brass)}
+.join h2{font-size:24px}
+.btn{align-self:flex-start;display:inline-block;padding:11px 26px;border-radius:999px;background:var(--navy);color:var(--btn-ink);text-decoration:none;font-family:var(--f-round);font-size:16px;border:2px solid var(--shadow);box-shadow:3px 3px 0 var(--shadow)}
+.btn.off{background:var(--soft);color:var(--muted);box-shadow:none;cursor:default}
+.btn:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.code{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border:2px dashed var(--brass);border-radius:14px;background:var(--soft);font-family:var(--f-round)}
+.code strong{color:var(--brass);font-weight:400;font-size:18px;letter-spacing:.06em}
+.copy{flex:none;font:inherit;font-size:14px;padding:6px 16px;border-radius:999px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer}
+
+/* others */
+.others{display:flex;flex-direction:column;gap:12px}
+.others h2{font-size:22px}
+details.card{padding:0;box-shadow:3px 3px 0 var(--shadow)}
+details summary{list-style:none;cursor:pointer;padding:13px 16px;font-family:var(--f-round);display:flex;gap:8px}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"▸";color:var(--brass)}
+details[open] summary::before{content:"▾"}
+details .in{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px}
+details .in a{color:var(--navy);font-size:14px}
+.close{padding:22px 20px;display:flex;flex-direction:column;gap:10px}
+.close h2{font-size:21px}
+.sign{font-family:var(--f-round);color:var(--muted);text-align:right}
+footer{font-size:12px;color:var(--muted);line-height:1.7;text-align:center}
+.back{align-self:center;font-family:var(--f-round);color:var(--navy);font-size:14px}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ill-a" viewBox="0 0 120 120">
+      <ellipse cx="60" cy="108" rx="36" ry="5" fill="#000" opacity=".1"/>
+      <path d="M14 58 L104 22 L74 98 L60 70 Z" fill="#FFFFFF" stroke="#1E2A38" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M104 22 L60 70 L54 92 L50 66 Z" fill="#C7D3DE" stroke="#1E2A38" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M14 58 L50 66" stroke="#1E2A38" stroke-width="2"/>
+      <path d="M22 88 q12 -2 20 -12" fill="none" stroke="#A9B8C7" stroke-width="2.5" stroke-dasharray="3 5" stroke-linecap="round"/>
+      <circle cx="26" cy="26" r="9" fill="#F7D35A" stroke="#1E2A38" stroke-width="2.5"/>
+    </symbol>
+    <symbol id="ill-b" viewBox="0 0 120 120">
+      <ellipse cx="60" cy="108" rx="42" ry="5" fill="#000" opacity=".12"/>
+      <path d="M16 58 L60 22 L104 58" fill="#C9443F" stroke="#1E2A38" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="24" y="56" width="72" height="48" rx="3" fill="#F7EEDC" stroke="#1E2A38" stroke-width="3"/>
+      <rect x="52" y="76" width="16" height="28" rx="2" fill="#B07A4A" stroke="#1E2A38" stroke-width="2.5"/>
+      <rect x="31" y="66" width="14" height="13" rx="2" fill="#F7D35A" stroke="#1E2A38" stroke-width="2"/>
+      <rect x="75" y="66" width="14" height="13" rx="2" fill="#F7D35A" stroke="#1E2A38" stroke-width="2"/>
+      <rect x="80" y="26" width="10" height="18" fill="#8A5A33" stroke="#1E2A38" stroke-width="2.5"/>
+      <g fill="none" stroke="#B9C4CF" stroke-width="2.5" stroke-linecap="round"><path d="M85 22 q-4 -6 0 -12"/></g>
+    </symbol>
+    <symbol id="ill-c" viewBox="0 0 120 120">
+      <ellipse cx="60" cy="108" rx="34" ry="5" fill="#000" opacity=".12"/>
+      <path d="M60 12 L98 26 V56 C98 80 82 96 60 104 C38 96 22 80 22 56 V26 Z" fill="#3B6EA5" stroke="#1E2A38" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M60 22 L88 32 V56 C88 74 76 86 60 93" fill="none" stroke="#6E9BCB" stroke-width="3" stroke-linecap="round"/>
+      <path d="M60 78 C44 68 46 52 54 53 C57 53.5 60 56 60 59 C60 56 63 53.5 66 53 C74 52 76 68 60 78 Z" fill="#F2B33D" stroke="#1E2A38" stroke-width="2.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ill-d" viewBox="0 0 120 120">
+      <ellipse cx="60" cy="106" rx="42" ry="5" fill="#000" opacity=".12"/>
+      <rect x="16" y="36" width="88" height="62" rx="6" fill="#FFFFFF" stroke="#1E2A38" stroke-width="3"/>
+      <path d="M16 40 L60 72 L104 40" fill="none" stroke="#1E2A38" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="60" cy="72" r="12" fill="#C9443F" stroke="#1E2A38" stroke-width="2.5"/>
+      <path d="M60 79 c-6 -4 -6 -9 -2 -9 c1.2 0 2 1 2 2 c0 -1 .8 -2 2 -2 c4 0 4 5 -2 9 Z" fill="#FFFFFF"/>
+      <path d="M92 18 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2 Z" fill="#F2C14E"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <!-- landing -->
+  <section id="home" class="wrap-inner" style="display:flex;flex-direction:column;gap:22px">
+    <div class="intro">
+      <span class="pill">心理測驗 · 剩下的一年</span>
+      <h1>如果知道人生只剩一年<br>你第一件會做的事是？</h1>
+      <p class="muted">別想太多，第一個念頭就是答案。</p>
+    </div>
+    <div class="card tiles">
+      <a class="tile" href="#a"><svg><use href="#ill-a"/></svg><b>A</b></a>
+      <a class="tile" href="#b"><svg><use href="#ill-b"/></svg><b>B</b></a>
+      <a class="tile" href="#c"><svg><use href="#ill-c"/></svg><b>C</b></a>
+      <a class="tile" href="#d"><svg><use href="#ill-d"/></svg><b>D</b></a>
+    </div>
+    <div class="opts">
+      <a class="card opt" href="#a"><span class="letter">A</span>辭掉工作，去做真正想做的事</a>
+      <a class="card opt" href="#b"><span class="letter">B</span>每個週末都回家</a>
+      <a class="card opt" href="#c"><span class="letter">C</span>把錢安排好，讓家人以後不用擔心</a>
+      <a class="card opt" href="#d"><span class="letter">D</span>把一直不敢說的話說出口</a>
+    </div>
+  </section>
+
+  <!-- result -->
+  <section id="result" hidden style="display:flex;flex-direction:column;gap:22px">
+    <div class="res-head">
+      <span class="pill">給你的一封小短信</span>
+      <h1 id="r-title"></h1>
+      <p class="chosen" id="r-chosen"></p>
+    </div>
+    <div class="res-art"><svg><use id="r-art" href="#ill-a"/></svg></div>
+    <p class="card quote" id="r-quote"></p>
+    <article class="card letter-card" id="r-body"></article>
+
+    <section class="card join" id="join">
+      <span class="eyebrow">上班族的加密貨幣學習社群</span>
+      <h2>把以後顧好，也是一種愛</h2>
+      <p>我們都希望，就算有一天不在了，家人也不用為錢煩惱。這件事不用等到最後一年，今天就能開始。不管你是哪一型，第一步都一樣：把錢的事學懂。這裡有一群跟你一樣的上班族，一起從零開始學。</p>
+      <a class="btn" id="join-btn" href="#join" target="_blank" rel="noopener">加入社群 →</a>
+      <div class="code">
+        <span id="code-text">入群暗號「<strong id="code">一年</strong>」，可以先領新手入門筆記</span>
+        <button class="copy" id="copy-btn" type="button">複製</button>
+      </div>
+    </section>
+
+    <section class="others">
+      <h2>也看看另外三種心情</h2>
+      <div id="r-others" class="others"></div>
+    </section>
+
+    <section class="card close">
+      <h2>好好活著，好好照顧自己</h2>
+      <p>你以為自己沒那麼重要，其實有人一輩子都放不下你。累了就休息，想家了就回家。</p>
+      <p>今天，先打一通電話給你想念的人。</p>
+      <p class="muted" style="font-size:13.5px">如果你最近真的很累、很難撐，1925 安心專線 24 小時都有人在（免付費），也可以找一個你信任的人說說。</p>
+      <p class="sign" id="sign"></p>
+    </section>
+    <a class="back" href="#home">← 回到題目</a>
+  </section>
+
+  <footer>加密貨幣價格波動很大，可能損失全部本金。本頁為心理測驗與學習分享，不構成任何投資建議。</footer>
+</div>
+
+<script>
+/* ===== 這裡改成你自己的資料（引號請用半形 " ） ===== */
+window.CONFIG = {
+  name: "[你的名字]",            // 發文者署名
+  joinUrl: "",                   // 社群連結，例如 https://line.me/ti/g2/xxxx
+  code: "一年"                   // 入群暗號
+};
+/* ================================ */
+</script>
+<script>
+const CONFIG = Object.assign({ name: "", joinUrl: "", code: "" }, window.CONFIG || {});
+
+const R = {
+ "a": {
+  "title": "你想把時間，留給真正想做的事",
+  "chosen": "你選了 A｜辭掉工作，去做真正想做的事",
+  "quote": "你不是不努力，你只是太久沒有為自己活了。",
+  "secs": [
+   [
+    "你選的，其實是一種心情",
+    [
+     "只剩一年，你第一個想放下的就是工作。那些開不完的會、回不完的訊息，突然都不重要了。你想去的地方、想學的東西、想見的人，才是你真正在乎的。",
+     "你心裡一直有一個「等有空再說」的清單，只是一直沒有空。"
+    ]
+   ],
+   [
+    "這份心情，背後是什麼",
+    [
+     "你被工作綁住很久了。不是不喜歡，而是它占掉了太多時間，多到你快忘了自己原本想過什麼樣的生活。"
+    ]
+   ],
+   [
+    "如果這些日常讓你有共鳴",
+    [
+     "週日晚上就開始焦慮；看到朋友去旅行，心裡會想「我什麼時候也可以」；你常想辭職，卻不知道辭了之後靠什麼生活。"
+    ]
+   ],
+   [
+    "在錢這件事上，可以怎麼練習",
+    [
+     "不用等到只剩一年，才去做想做的事。真正讓人不敢離開的，常常是錢：只有一份收入、沒有存款。先存一筆「轉換基金」，三到六個月的生活費；再慢慢讓收入不只一個來源。有了底氣，就有選擇。"
+    ]
+   ]
+  ],
+  "steps": [
+   [
+    "寫下你的「等有空再說」清單",
+    "挑一件，排進下個月的行事曆。"
+   ],
+   [
+    "開一個轉換基金帳戶",
+    "每月固定存，目標三到六個月生活費。"
+   ],
+   [
+    "這週準時下班一次",
+    "把那個晚上，留給自己想做的事。"
+   ]
+  ],
+  "ask": "如果不用擔心錢，你明天最想去做什麼？",
+  "say": "我不用等到最後，才開始為自己活。"
+ },
+ "b": {
+  "title": "你心裡最重的，一直是家",
+  "chosen": "你選了 B｜每個週末都回家",
+  "quote": "你想用剩下的時間，把錯過的那些週末補回來。",
+  "secs": [
+   [
+    "你選的，其實是一種心情",
+    [
+     "只剩一年，你第一個想到的不是去哪裡，而是回家。吃媽煮的飯、陪爸看電視、聽他們講那些重複的話。你突然發現，這些以前覺得很普通的事，才是最想留住的。",
+     "你很顧家，只是工作和距離，讓你回去的次數越來越少。"
+    ]
+   ],
+   [
+    "這份心情，背後是什麼",
+    [
+     "你心裡其實一直有點愧疚：總是說「下次再回去」，下次卻一直往後延。你知道爸媽在變老，只是不敢去算還剩幾次。"
+    ]
+   ],
+   [
+    "如果這些日常讓你有共鳴",
+    [
+     "每次回家都待不到兩天；爸媽說「不用回來啦」，你就真的沒回去；掛掉電話後，會突然很想家。"
+    ]
+   ],
+   [
+    "在錢這件事上，可以怎麼練習",
+    [
+     "很多人不常回家，其實跟錢和時間有關：車票、請假、加班。把回家這件事排進預算，每月固定存一筆「回家基金」。也找機會跟爸媽聊一次錢，了解他們的退休準備，讓陪伴不只是週末，而是一起把以後顧好。"
+    ]
+   ]
+  ],
+  "steps": [
+   [
+    "把下一次回家排進行事曆",
+    "先買票，再跟爸媽說。"
+   ],
+   [
+    "每月存一筆回家基金",
+    "車票、伴手禮，都從這裡出。"
+   ],
+   [
+    "今天打一通電話回家",
+    "不用聊什麼，問他們晚餐吃什麼。"
+   ]
+  ],
+  "ask": "你上一次回家，是什麼時候？",
+  "say": "家一直都在，我要記得常回去。"
+ },
+ "c": {
+  "title": "你愛人的方式，是替他們把以後顧好",
+  "chosen": "你選了 C｜把錢安排好，讓家人以後不用擔心",
+  "quote": "你想的不是自己，是你不在之後，他們會不會過得好。",
+  "secs": [
+   [
+    "你選的，其實是一種心情",
+    [
+     "只剩一年，你第一個想到的是：爸媽以後怎麼辦？家裡的錢夠不夠？你想在離開前把一切安排好，讓他們不用因為錢再多煩惱一次。",
+     "你是很有責任感的人，愛人的方式很實際。"
+    ]
+   ],
+   [
+    "這份心情，背後是什麼",
+    [
+     "你心裡其實一直有點擔心：自己的存款、家裡的狀況、萬一出事該怎麼辦。只是平常太忙，這些事一直沒有好好整理。"
+    ]
+   ],
+   [
+    "如果這些日常讓你有共鳴",
+    [
+     "你會想自己的保險保了什麼，但一直沒拿出來看；看到新聞說誰突然生病，會想到如果是自己怎麼辦；你知道要規劃，但不知道從哪裡開始。"
+    ]
+   ],
+   [
+    "在錢這件事上，可以怎麼練習",
+    [
+     "不用等到只剩一年，現在就能開始：先存一筆預備金，再把保單拿出來看一遍，確認生病、意外時夠不夠用；然後學著讓存款穩穩地長大。只用閒錢、看不懂的不碰、看到「保證獲利」就關掉。把以後顧好，就是最實際的愛。"
+    ]
+   ]
+  ],
+  "steps": [
+   [
+    "把保單拿出來看一遍",
+    "生病、意外、住院，各能幫你多少？"
+   ],
+   [
+    "先存三到六個月的預備金",
+    "這是你和家人的安全網。"
+   ],
+   [
+    "找一群一起學理財的人",
+    "有人一起討論，比一個人摸索更穩。"
+   ]
+  ],
+  "ask": "如果明天發生意外，你的家人知道你的重要資料放在哪裡嗎？",
+  "say": "把以後顧好，也是一種愛。"
+ },
+ "d": {
+  "title": "你最想留下的，是那些沒說出口的話",
+  "chosen": "你選了 D｜把一直不敢說的話說出口",
+  "quote": "有些話不說，就真的沒機會說了。",
+  "secs": [
+   [
+    "你選的，其實是一種心情",
+    [
+     "只剩一年，你最想做的是把話說完：跟爸媽說謝謝、跟吵過架的人說對不起、跟喜歡的人說喜歡。這些話放在心裡很久了，一直在等一個時機。",
+     "你的感情很深，只是習慣收著。"
+    ]
+   ],
+   [
+    "這份心情，背後是什麼",
+    [
+     "你怕說出來會尷尬、會被拒絕，或是說了也改變不了什麼。所以你一直等，等到好像永遠都不是時候。"
+    ]
+   ],
+   [
+    "如果這些日常讓你有共鳴",
+    [
+     "訊息打好了又刪掉；家人生日時，只傳一句「生日快樂」；心情不好的時候，會靠買東西或滑手機讓自己好過一點。"
+    ]
+   ],
+   [
+    "在錢這件事上，可以怎麼練習",
+    [
+     "情緒收得很深的人，常常在心情不好時做錢的決定：衝動消費、一時衝動的投資。給自己一條規則：心情很差的晚上，不做任何超過一千元的決定。存錢也設成自動，讓錢的事不用靠心情。"
+    ]
+   ]
+  ],
+  "steps": [
+   [
+    "今天說一句沒說出口的話",
+    "「謝謝」「對不起」「我想你」，挑一句就好。"
+   ],
+   [
+    "心情差的晚上不做錢的決定",
+    "隔天睡飽再說。"
+   ],
+   [
+    "把存錢設成自動扣款",
+    "少一件需要靠意志力的事。"
+   ]
+  ],
+  "ask": "如果今天是最後一次見到某個人，你最想對他說什麼？",
+  "say": "想說的話，現在就說。"
+ }
+};
+const SHORT = {"a": "你想把時間，留給真正想做的事", "b": "你心裡最重的，一直是家", "c": "你愛人的方式，是替他們把以後顧好", "d": "你最想留下的，是沒說出口的話"};
+const nums = ["①","②","③"];
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+function render(k){
+  const r = R[k];
+  $("r-title").textContent = r.title;
+  $("r-chosen").textContent = r.chosen;
+  $("r-quote").textContent = r.quote;
+  $("r-art").setAttribute("href", "#ill-" + k);
+  let h = r.secs.map(([t, ps]) => `<div class="sec"><h3>${t}</h3>${ps.map(p => `<p>${esc(p)}</p>`).join("")}</div>`).join("");
+  h += `<div class="sec"><h3>今天就能開始的三件小事</h3><div class="steps">${r.steps.map((s,i)=>`<div><b>${nums[i]} ${s[0]}</b>${s[1]}</div>`).join("")}</div></div>`;
+  h += `<div class="sec"><h3>留一個問題給自己</h3><p>${r.ask}</p></div>`;
+  h += `<div class="sec"><h3>也送給自己這句話</h3><p class="say">「${r.say}」</p></div>`;
+  $("r-body").innerHTML = h;
+  $("r-others").innerHTML = Object.keys(R).filter(x => x !== k).map(x =>
+    `<details class="card"><summary><b>${x.toUpperCase()}</b>｜${SHORT[x]}</summary><div class="in"><p class="muted">${R[x].quote}</p><a href="#${x}">看完整解析</a></div></details>`).join("");
+}
+function route(){
+  const k = (location.hash || "").slice(1).toLowerCase();
+  if (k && k !== "home" && !(k in R)) return;
+  const isRes = k in R;
+  $("home").hidden = isRes;
+  $("result").hidden = !isRes;
+  if (isRes) render(k);
+  window.scrollTo(0, 0);
+}
+$("sign").textContent = CONFIG.name ? "— " + CONFIG.name : "";
+$("code").textContent = CONFIG.code;
+(function setupJoin(){
+  const btn = $("join-btn");
+  let url = String(CONFIG.joinUrl || "").trim();
+  if (url && !/^https?:\/\//i.test(url)) url = "https://" + url;
+  if (url) { btn.href = url; return; }
+  btn.removeAttribute("href"); btn.removeAttribute("target");
+  btn.setAttribute("aria-disabled", "true");
+  btn.classList.add("off");
+  btn.textContent = "社群連結準備中";
+})();
+function copyText(text){
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+  return new Promise((ok, fail) => {
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+    let done = false; try { done = document.execCommand("copy"); } catch (e) {}
+    ta.remove(); done ? ok() : fail();
+  });
+}
+$("copy-btn").addEventListener("click", () => {
+  const b = $("copy-btn");
+  copyText(CONFIG.code).then(() => {
+    b.textContent = "已複製"; setTimeout(() => b.textContent = "複製", 1500);
+  }).catch(() => {
+    getSelection().selectAllChildren($("code")); b.textContent = "請長按複製";
+  });
+});
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
